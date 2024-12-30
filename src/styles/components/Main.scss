@@ -1,0 +1,54 @@
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling for all scrollable elements */
+}
+
+body {
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+  -webkit-overflow-scrolling: touch;  /* Enable smooth scrolling on iOS devices */
+}
+
+/* Optional: Style the custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-text-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-text-color-dark);
+}
+
+/* Prevent any unwanted scrollbars in the Main container */
+.Main {
+  margin: 0 7rem;
+  padding: 20px 0;
+  height: 100vh; /* Ensure it takes full viewport height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  box-sizing: border-box; /* Ensure padding/border don't affect layout */
+
+  .Main::-webkit-scrollbar {
+    display: none;  /* Hide the scrollbar */
+  }
+
+  // Mobile adjustments
+  @media only screen and (max-width: 821px) {
+    margin: 1rem;
+    padding: 0;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 1rem;
+    padding: 0;
+  }
+}

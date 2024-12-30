@@ -1,0 +1,94 @@
+@use '../variables/variables' as *;
+
+.Forecast {
+  margin-top: 2rem;
+  @include no-text-select;
+
+  .widget-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto; // Allow horizontal scrolling for the widgets
+    overflow-y: hidden; // Prevent vertical scrolling
+    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+    scroll-snap-type: x mandatory; // Enable smooth snapping for widgets
+    -webkit-overflow-scrolling: touch; // Enable smooth scrolling on mobile devices
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    .widget-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .widget {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.75rem;
+      margin-right: 0.75rem;
+      min-width: 115px;
+      border: 1px solid var(--secondary-text-color);
+      border-radius: 1rem;
+      scroll-snap-align: start; // Ensure each widget snaps into view
+
+      .day {
+        margin-bottom: 20px;
+        position: absolute;
+        top: -1.5rem;
+      }
+
+      .icon-temp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.75rem 0;
+
+        img {
+          width: 40px;
+          margin-right: 0.25rem;
+        }
+      }
+
+      .wind {
+        margin-top: 0.25rem;
+        display: flex;
+
+        .speed {
+          margin-right: 0.25rem;
+        }
+
+        .wind-dir {
+          font-size: 0.8rem;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media screen and (max-width: 768px) {
+    .widget-container {
+      overflow-x: auto; // Ensure horizontal scrolling on small screens
+      flex-wrap: nowrap; // Prevent wrapping to maintain horizontal scrolling
+      padding-bottom: 1rem; // Add padding for better UX
+    }
+
+    .widget {
+      margin-right: 0.5rem;
+      min-width: 100px; // Slightly smaller widgets for small screens
+    }
+  }
+
+  // Additional styling for better usability on mobile devices
+  @media screen and (max-width: 480px) {
+    .widget-container {
+      gap: 0.5rem; // Reduce spacing between widgets for smaller screens
+    }
+
+    .widget {
+      min-width: 90px; // Further reduce widget size for compact screens
+    }
+  }
+}
