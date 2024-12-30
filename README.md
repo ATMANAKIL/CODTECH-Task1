@@ -1,4 +1,4 @@
-# CODTECH-Task1
+# CODTECH-Task2
 
 Name: AKILAN G
 Company: CODTECH IT
